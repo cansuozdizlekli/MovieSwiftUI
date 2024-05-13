@@ -130,7 +130,7 @@
 		8D9171D72BEB7FC90092DC91 /* MovieSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				8DBBAC872BF16AC1005D278A /* New Group */,
+				8DBBAC872BF16AC1005D278A /* Base */,
 				8D9172262BED046F0092DC91 /* Info.plist */,
 				8D9172102BEB8CE20092DC91 /* ViewModels */,
 				8D9172022BEB81810092DC91 /* Views */,
@@ -253,12 +253,12 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
-		8DBBAC872BF16AC1005D278A /* New Group */ = {
+		8DBBAC872BF16AC1005D278A /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				8DBBAC882BF16AD6005D278A /* ContentType.swift */,
 			);
-			path = "New Group";
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

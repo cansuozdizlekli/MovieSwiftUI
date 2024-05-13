@@ -1,0 +1,48 @@
+//
+//  MovieEndpoint.swift
+//  MovieSwiftUI
+//
+//  Created by Cansu Özdizlekli on 5/8/24.
+//
+
+import Foundation
+
+protocol Endpoint {
+    var path: String { get }
+}
+
+enum MovieEndpoint {
+    case nowPlaying
+    case popular
+    case movieDetail(movieID: Int)
+    case movieImage(movieID: Int)
+    case movieVideo(movieID: Int)
+}
+
+extension MovieEndpoint: Endpoint {
+    
+    var path: String {
+        switch self {
+        case .nowPlaying:
+            return "/movie/now_playing"
+        case .popular:
+            return "/movie/popular"
+        case .movieDetail(let movieID):
+            return "/movie/\(movieID)"
+        case .movieImage(let movieID):
+            return "/movie/\(movieID)/images"
+        case .movieVideo(let movieID):
+            return "/movie/\(movieID)/videos"
+        }
+    }
+    
+//    var apiKey: String {
+//        return "76b0e8454bbbcbeef094c7e4fc5ece8e"
+//    }
+    
+//    var url: URL {
+//        let urlString = baseURL.absoluteString + path + "?api_key=" + apiKey
+//        return URL(string: urlString)!
+//    }
+    
+}
