@@ -43,7 +43,7 @@ struct MovieListView: View {
                         LazyVGrid(columns: adaptiveColumns, spacing: 4) {
                             ForEach(viewModel.nowPlayingMovies) { movie in
                                 NavigationLink(destination:
-                                                MovieDetailView()
+                                                MovieDetailView(movieId: movie.id)
                                 ) {
                                     MovieListItemView(movie: movie)
                                 }

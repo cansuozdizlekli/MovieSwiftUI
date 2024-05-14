@@ -11,7 +11,6 @@ import Combine
 class MovieDataService {
     @Published var nowShowingMovies : [Results] = []
 
-    
     var movieSubscription: AnyCancellable?
     
     init() {
@@ -20,7 +19,6 @@ class MovieDataService {
 
     
     private func getNowPlayingMovies() {
-        let url = constructURL(for: .nowPlaying)
         
         movieSubscription = NetworkManager.download(url: constructURL(for: .nowPlaying))
             .decode(type: Movie.self, decoder: JSONDecoder())
@@ -42,6 +40,7 @@ class MovieDataService {
         guard let urlWithApiKey = urlWithParams.addingApiKey() else {
                 fatalError("API anahtarı eklenemedi.")
         }
+        
         return urlWithApiKey
     }
 }

@@ -8,14 +8,28 @@
 import SwiftUI
 
 struct MovieDetailView: View {
+    
+    var movieId: Int
+    @StateObject var viewModel: MovieDetailViewModel
+    
+    init(movieId: Int) {
+          self.movieId = movieId
+        self._viewModel = StateObject(wrappedValue: MovieDetailViewModel(movieID: movieId))
+    }
+    
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        if let movieDetail = viewModel.movieDetail {
+            Text(movieDetail.title ?? "") // Örnek olarak film başlığını gösteriyoruz
+                    } else {
+                        ProgressView() // Veriler yüklenirken progress göster
+                }
     }
 }
 
 #Preview {
-    MovieDetailView()
+    MovieDetailView(movieId: 33)
 }
 
 
