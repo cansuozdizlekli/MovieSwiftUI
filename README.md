@@ -34,15 +34,15 @@ The detail screen includes the following information:
 ## 3. Endpoints Base Urls
 Base URL: [https://api.themoviedb.org/3](https://api.themoviedb.org/3) .
 
-`{baseURL}/movie/now_playing`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&;&nbsp;&nbsp;Loads the movies currently playing in theaters.
+`{baseURL}/movie/now_playing`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Loads the movies currently playing in theaters.
 
-`{baseURL}/movie/{id}`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loads details of a single movie.
+`{baseURL}/movie/{id}`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Loads details of a single movie.
 
-`{baseURL}/movie/{id}/images`&nbsp;&nbsp;&nbsp;&nbsp; Loads multiple images of a movie.
+`{baseURL}/movie/{id}/images`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Loads multiple images of a movie.
 
-`{baseURL}/movie/{id}/videos`&nbsp;&nbsp;&nbsp; Loads a video related to a movie.
+`{baseURL}/movie/{id}/videos`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Loads a video related to a movie.
 
-`{baseURL}/movie/{id}/credits`&nbsp;&nbsp;&nbsp;&nbsp; Loads detailed information about the cast and crew of a movie.
+`{baseURL}/movie/{id}/credits`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Loads detailed information about the cast and crew of a movie.
 
 These endpoints are used to access movie data through the TMDB API.
 
