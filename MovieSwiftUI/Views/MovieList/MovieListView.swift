@@ -11,6 +11,7 @@ import Combine
 struct MovieListView: View {
     
     @StateObject private var viewModel = MovieListViewModel()
+    @State private var scrollToTop = false
     
     var body: some View {
         NavigationView {
@@ -55,17 +56,14 @@ extension MovieListView {
                         ) {
                             MovieListItemView(movieId: movie.id)
                         }
+                        .onAppear {
+                            if index == viewModel.nowPlayingMovies.count - 3 {
+                                viewModel.fetchNextPage()
+                            }
+                        }
                     }
                 }
             }.padding([.leading,.trailing],10)
-                .onChange(of: scrollToTop) { oldValue, newValue in
-                    if newValue {
-                        withAnimation {
-                            proxy.scrollTo(0, anchor: .top)
-                        }
-                        scrollToTop = false
-                    }
-                }
             
         }
     }
