@@ -14,9 +14,11 @@ protocol Endpoint {
 enum MovieEndpoint {
     case nowPlaying
     case popular
+    case genre
     case movieDetail(movieID: Int)
     case movieImage(movieID: Int)
     case movieVideo(movieID: Int)
+    case cast(movieID: Int)
 }
 
 extension MovieEndpoint: Endpoint {
@@ -33,6 +35,10 @@ extension MovieEndpoint: Endpoint {
             return "/movie/\(movieID)/images"
         case .movieVideo(let movieID):
             return "/movie/\(movieID)/videos"
+        case .cast(let movieID):
+            return "/movie/\(movieID)/credits"
+        case .genre:
+            return "/genre/movie/list"
         }
     }
     
@@ -44,5 +50,6 @@ extension MovieEndpoint: Endpoint {
 //        let urlString = baseURL.absoluteString + path + "?api_key=" + apiKey
 //        return URL(string: urlString)!
 //    }
+    
     
 }

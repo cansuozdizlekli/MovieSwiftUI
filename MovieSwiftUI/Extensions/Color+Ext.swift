@@ -18,4 +18,7 @@ struct ColorTheme {
     let background = Color("BackgroundColor")
     let star = Color("StarColor")
     let secondaryText = Color("SecondaryTextColor")
+    let customGray = Color("CustomGrayColor")
+    let splashTop = Color("SplashTop")
+    let splashBottom = Color("SplashBottom")
 }

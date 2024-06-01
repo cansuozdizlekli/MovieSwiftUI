@@ -11,7 +11,7 @@ struct ContentView: View {
     @EnvironmentObject private var viewModel: MovieListViewModel
     
     var body: some View {
-        MovieListView()
+        TabBarView()
     }
 }
 
