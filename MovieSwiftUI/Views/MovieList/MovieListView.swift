@@ -6,12 +6,10 @@
 //
 
 import SwiftUI
-import Combine
 
 struct MovieListView: View {
     
     @StateObject private var viewModel = MovieListViewModel()
-    @State private var scrollToTop = false
     
     var body: some View {
         NavigationView {
@@ -64,7 +62,6 @@ extension MovieListView {
                     }
                 }
             }.padding([.leading,.trailing],10)
-            
         }
     }
 }
