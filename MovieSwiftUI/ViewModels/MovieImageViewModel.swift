@@ -1,34 +1,33 @@
 //
-//  MovieListItemViewModel.swift
+//  MovieImageViewModel.swift
 //  MovieSwiftUI
 //
-//  Created by Cansu Özdizlekli on 5/13/24.
+//  Created by Cansu Özdizlekli on 5/15/24.
 //
 
 import Foundation
 import Combine
 
-class MovieListItemViewModel : ObservableObject {
+class MovieImageViewModel : ObservableObject {
     
-    @Published var movieDetail : MovieDetail?
-    private let detailService: MovieDetailService
-    private var cancellables = Set<AnyCancellable>()
+    @Published var movieImages : [Backdrop]?
+    private let imageService: MovieImageService
     private let baseURL = "https://image.tmdb.org/t/p/"
     private let imageSize = "w500"
+    private var cancellables = Set<AnyCancellable>()
     
     init(movieID: Int) {
-        self.detailService = MovieDetailService(movieID: movieID)
+        self.imageService = MovieImageService(movieID: movieID)
         addSubscribers()
     }
     
     func addSubscribers(){
-        detailService.$movieDetail
-            .sink { [weak self] (returnedMovieDetail) in
-                self?.movieDetail = returnedMovieDetail
+        imageService.$movieImages
+            .sink { [weak self] (returnedImages) in
+                self?.movieImages = returnedImages
             }.store(in: &cancellables)
-
     }
-        
+    
     func imageURL(forPosterPath posterPath: String) -> URL {
         let fullPosterPath = "\(baseURL)\(imageSize)\(posterPath)"
         guard let url = URL(string: fullPosterPath) else {
@@ -37,7 +36,4 @@ class MovieListItemViewModel : ObservableObject {
         }
         return url
     }
-    
-    
-        
 }

@@ -9,55 +9,65 @@ import SwiftUI
 
 struct MovieListItemView: View {
     
-    @StateObject var viewModel = MovieListItemViewModel()
+    let movieId: Int
+    @StateObject private var viewModel: MovieListItemViewModel
     
-    let movie: Results
+    init(movieId: Int) {
+        self.movieId = movieId
+        _viewModel = StateObject(wrappedValue: MovieListItemViewModel(movieID: movieId))
+    }
     
     var body: some View {
-        VStack() {
+        VStack {
             VStack(alignment: .leading) {
                 AsyncImage(
-                    url: viewModel.imageURL(forPosterPath: movie.posterPath ?? ""),
+                    url: viewModel.imageURL(forPosterPath: viewModel.movieDetail?.posterPath ?? ""),
                     content: { content in
                         content.resizable()
                     },placeholder: {
                         ProgressView()
                     })
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: UIScreen.main.bounds.width / 2.2, height: 280)
-
-                HStack {
-                    ForEach(0..<5) { _ in
-                        Image(systemName: "star.fill")
-                            .frame(width: 10,height: 10)
-                            .foregroundColor(.yellow)
-                    }.padding(.leading,3)
-                }.padding([.leading, .bottom],3)
-                
-                Text(movie.title ?? "")
-                    .font(.headline)
-                    .foregroundColor(.primary)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: UIScreen.main.bounds.width / 2.2, height: 250)
                 
                 HStack {
-                    Text("33 ")
-                    Image(systemName: "circle.fill")
-                        .resizable()
-                        .frame(width: 3,height:3)
-                    Text("2h 10m | R")
-                }.font(.caption)
-                    .foregroundColor(Color.theme.secondaryText)
+                    ForEach(0..<5) { index in
+                        let filledStars = Double(viewModel.movieDetail?.voteAverage ?? 0) / 2
+                        Image(systemName: index < Int(filledStars) ? "star.fill" : "star")
+                            .resizable()
+                            .frame(width: 14, height: 14)
+                            .foregroundColor(Color.theme.star)
+                    }.padding(.trailing,-5)
+                }.padding(.top,15)
+                
+                VStack(alignment: .leading,spacing: 4) {
+                    Text(viewModel.movieDetail?.title ?? "")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                        .lineLimit(1)
+                    
+                    HStack {
+                        Text(viewModel.movieDetail?.genres?.first?.name ?? "")
+                        Image(systemName: "circle.fill")
+                            .resizable()
+                            .frame(width: 3,height:3)
+                        Text(viewModel.movieDetail?.formattedRuntime ?? "")
+                    }.font(.system(size: 12))
+                        .fontWeight(.medium)
+                        .foregroundColor(Color.theme.customGray)
+                    
+                }
                 
                 Spacer()
                 
             }.frame(width: UIScreen.main.bounds.width / 2.2 , height: 370)
-//                .background(Color.blue)
             
         }
     }
 }
 
 #Preview {
-    MovieListItemView(movie: Results(adult: false, backdropPath: "/1DTP1Ph4uzNO6ofRUm7eAimWoKD.jpg", genreIDS:  [28, 878], id: 823464, originalLanguage: "en", originalTitle: "Godzilla x Kong: The New Empire", overview: "Following their explosive showdown, Godzilla and Kong must reunite against a colossal undiscovered threat hidden within our world, challenging their very existence – and our own.", popularity: 1506.77, posterPath: "/1DTP1Ph4uzNO6ofRUm7eAimWoKD.jpg", releaseDate: "2024-03-27", title: "Godzilla x Kong: The New Empire", video: false, voteAverage: 6.473, voteCount: 964))
+    MovieListItemView(movieId: 32)
         .previewLayout(.sizeThatFits)
-        .environmentObject(MovieListItemViewModel())
+        .environmentObject(MovieListItemViewModel(movieID: 33))
 }

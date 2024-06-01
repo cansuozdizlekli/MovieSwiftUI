@@ -11,11 +11,12 @@ import Combine
 class MovieListViewModel : ObservableObject {
     
     @Published var nowPlayingMovies : [Results] = []
+    private var currentPage = 1
     
     private let dataService = MovieDataService()
     
     private var cancellables = Set<AnyCancellable>()
-        
+    
     init(){
         addSubscribers()
     }
@@ -25,6 +26,12 @@ class MovieListViewModel : ObservableObject {
             .sink { [weak self] (returnedMovies) in
                 self?.nowPlayingMovies = returnedMovies
             }.store(in: &cancellables)
-        
     }
+    
+    func fetchNextPage() {
+        currentPage += 1
+        dataService.getNowPlayingMovies(page: currentPage)
+        addSubscribers()
+    }
+    
 }
