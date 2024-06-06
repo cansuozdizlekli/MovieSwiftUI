@@ -12,12 +12,12 @@ class MovieDetailViewModel : ObservableObject {
     
     @Published var movieDetail : MovieDetail?
     private let detailService: MovieDetailService
-    private let baseURL = "https://image.tmdb.org/t/p/"
-    private let imageSize = "w500"
     private var cancellables = Set<AnyCancellable>()
     
     @Published var videoResult : [VideoResult]?
     private let videoService: MovieVideoService
+    
+    private let imageURLHelper = ImageURLHelper()
     
     init(movieID: Int) {
         self.detailService = MovieDetailService(movieID: movieID)
@@ -39,11 +39,6 @@ class MovieDetailViewModel : ObservableObject {
     }
     
     func imageURL(forPosterPath posterPath: String) -> URL {
-        let fullPosterPath = "\(baseURL)\(imageSize)\(posterPath)"
-        guard let url = URL(string: fullPosterPath) else {
-            print("Invalid URL for image")
-            return URL(filePath: "")
-        }
-        return url
+        return imageURLHelper.imageURL(forPosterPath: posterPath)
     }
 }

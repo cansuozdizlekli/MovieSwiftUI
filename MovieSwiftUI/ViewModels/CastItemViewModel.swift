@@ -10,15 +10,9 @@ import Combine
 
 class CastItemViewModel : ObservableObject {
     
-    private let baseURL = "https://image.tmdb.org/t/p/"
-    private let imageSize = "w500"
+    private let imageURLHelper = ImageURLHelper()
     
     func imageURL(forPosterPath posterPath: String) -> URL {
-        let fullPosterPath = "\(baseURL)\(imageSize)\(posterPath)"
-        guard let url = URL(string: fullPosterPath) else {
-            print("Invalid URL for image")
-            return URL(filePath: "")
-        }
-        return url
+        return imageURLHelper.imageURL(forPosterPath: posterPath)
     }
 }

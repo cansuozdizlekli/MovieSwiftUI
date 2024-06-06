@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WebKit
+import WidgetKit
 
 struct MovieDetailView: View {
     
@@ -139,6 +140,7 @@ struct MovieDetailView: View {
         } else {
             FavoritesManager.shared.addFavorite(movieID: movieId)
         }
+        WidgetCenter.shared.reloadAllTimelines()
         isFavorite.toggle()
     }
 }
