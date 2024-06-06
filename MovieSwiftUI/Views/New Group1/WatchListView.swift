@@ -18,19 +18,21 @@ struct WatchListView: View {
                 
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))], spacing: 4) {
+                        
                         ForEach(viewModel.watchlistMoviesIds, id: \.self) { movieId in
                             NavigationLink(destination: MovieDetailView(movieId: movieId)) {
                                 MovieListItemView(movieId: movieId)
                             }
                         }
+                        
                     }
-                }.padding([.leading,.trailing],10)          
+                }.padding([.leading,.trailing],10)
             }.background(Color.theme.background)
                 .onAppear {
                     viewModel.refreshWatchlistMovies()
                 }
         }
-       
+        
     }
 }
 
@@ -46,6 +48,13 @@ extension WatchListView {
                 .fontWeight(.bold)
                 .padding(.leading)
                 .foregroundColor(Color.theme.secondaryText)
+            
+            if viewModel.watchlistMoviesIds.isEmpty {
+                Text("There are no movies. Please add some here!")
+                    .foregroundColor(Color.theme.secondaryText)
+                    .padding(.leading)
+                    
+            }
         }
     }
 }

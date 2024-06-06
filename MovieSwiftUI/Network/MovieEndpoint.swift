@@ -42,14 +42,5 @@ extension MovieEndpoint: Endpoint {
         }
     }
     
-//    var apiKey: String {
-//        return "76b0e8454bbbcbeef094c7e4fc5ece8e"
-//    }
-    
-//    var url: URL {
-//        let urlString = baseURL.absoluteString + path + "?api_key=" + apiKey
-//        return URL(string: urlString)!
-//    }
-    
     
 }

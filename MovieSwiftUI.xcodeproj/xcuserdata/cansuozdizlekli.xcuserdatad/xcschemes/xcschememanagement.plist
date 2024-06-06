@@ -7,7 +7,35 @@
 		<key>MovieSwiftUI.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>MovieSwiftUITests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>MovieSwiftUIWidgetExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>8D9171D42BEB7FC90092DC91</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8D9171E42BEB7FCA0092DC91</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8DDAD7E52C0B472B0039F142</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

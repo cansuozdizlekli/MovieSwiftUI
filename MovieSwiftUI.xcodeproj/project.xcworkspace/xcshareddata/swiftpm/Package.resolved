@@ -1,13 +1,13 @@
 {
-  "originHash" : "2e3e3c8add26e30c6fc3b1f550bb35fed88d5b13c3d54f0150f768c0c09f66e5",
+  "originHash" : "7abf1dd76d62709d50ab97ba7b5907de6a95cbc813d2bf154db0688b92d85914",
   "pins" : [
     {
-      "identity" : "youtubeplayer-in-wkwebview",
+      "identity" : "viewinspector",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/hmhv/YoutubePlayer-in-WKWebView",
+      "location" : "https://github.com/nalexn/ViewInspector",
       "state" : {
-        "revision" : "3d24743643fd4460e40ca8f4cd844563d32bb05f",
-        "version" : "0.3.11"
+        "revision" : "7b1732802ffe30e6a67754bda6c7819e5cb0eb70",
+        "version" : "0.9.11"
       }
     }
   ],

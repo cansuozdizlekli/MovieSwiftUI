@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SplashScreenView: View {
-    @State private var isActive = false
+    @State var isActive = false
     @State private var scale: CGFloat = 0.5
     @State private var opacity = 0.5
     @State private var offsetY: CGFloat = 0
@@ -50,7 +50,6 @@ struct SplashScreenView: View {
                     }
             }
             .onAppear {
-
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     self.isActive = true
                 }
